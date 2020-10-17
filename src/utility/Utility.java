@@ -76,11 +76,14 @@ public class Utility {
             return 0;
     }
     /**
-     * Functionality   : This function is used to calculate
-     *                   salary of Full-time and Part-time
-     *                   work of employees using switch case
-     * @return salary  - Returns the value after computing the
-     *                   salary
+     * Functionality         : This function is used to calculate
+     *                         salary of Full-time and Part-time
+     *                         work of employees using switch case
+     * @param TypeofEmployee - Input parameter from the user
+     *                         regarding full-time or
+     *                         part-time employee
+     * @return salary        - Returns the value after computing the
+     *                         salary
      */
     public int SwitchCaseComputation(int TypeofEmployee) {
         int empRateperHr = 20;
@@ -100,5 +103,26 @@ public class Utility {
 
         }
     }
-}
+    /**
+     * Functionality         : This function is used to calculate
+     *                         salary of Full-time and Part-time
+     *                         work of employees for a month
+     * @param TypeofEmployee - Input parameter from the user
+     *                         regarding full-time or
+     *                         part-time employee
+     * @return salary        - Returns the value after computing the
+     *                         salary
+     */
+    public int WageForMonth(int TypeofEmployee) {
+        int WorkingDays=20;
+        int salary;
+        int TotalSalary=0;
+        for(int day=1; day<=WorkingDays; day++){
+            salary = SwitchCaseComputation(TypeofEmployee);
+            TotalSalary = TotalSalary+salary;
+        }
+        return TotalSalary;
+    }
 
+
+}
