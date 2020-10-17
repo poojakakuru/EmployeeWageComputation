@@ -1,6 +1,6 @@
 package utility;
 
-/** @author Sukrutha Manjunath
+/** @author Pooja Kakuru
  * Create Date   : 17th-october-2020
  * Functionality : This is utility file which contains logic
  *                 of all codes of EmpWageComputationJava
