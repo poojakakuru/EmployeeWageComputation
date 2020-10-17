@@ -1,21 +1,27 @@
 package Program;
-
 import utility.Utility;
-
-/**@author pooja kakuru
+/**@author Pooja Kakuru
  * Create Date   : 17th-october-2020
  * Functionality : Calculating Employee Wage
  */
 
-public class EmployeeWage {
+public class EmployeeWage{
     public static void main(String[] args) {
-        System.out.println("Welcome to Employee wage Computation program");
-        Utility utility=new Utility();
-        double attendance = utility.EmpAttendance();
+        //welcome message
+        System.out.println("Welcome to Employee Wage Computation Program");
+        Utility util=new Utility();
+        //checking if employee is present or absent
+        double attendance = util.EmpAttendance();
         if (attendance == 1)
             System.out.println("Employee is Present");
-        else
+        else {
             System.out.println("Employee is Absent");
-
+        }
+        //calculating daily wage for 8 hours
+        int salary = util.DailyWage();
+        if (salary != 0)
+            System.out.println("salary for 8 hrs work daily is " + salary);
+        else
+            System.out.println("employee is absent ,hence salary is " +salary);
     }
 }
