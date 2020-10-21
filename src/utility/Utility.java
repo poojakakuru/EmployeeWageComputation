@@ -1,7 +1,8 @@
 package utility;
-import java.util.Random;
+
 /** @author Pooja Kakuru
  * Create Date   : 17th-october-2020
+ * Modified Date : 20th-october-2020
  * Functionality : This is utility file which contains logic
  *                 of all codes of EmpWageComputationJava
  *                 project
@@ -17,8 +18,8 @@ public class Utility {
      * @return empCheck - Returns generated random number
      */
 
-    public double GenerateRandom() {
-        double empCheck = Math.floor(Math.random() * 10) % 2;
+    public static double GenerateRandom() {
+        double empCheck = Math.floor(Math.random() * 10) % 3;
         return empCheck;
     }
 
@@ -124,26 +125,37 @@ public class Utility {
      * Functionality         : This function is used to calculate
      *                         salary of employee till working
      *                         hours reached 100 or working days
-     *                         reached 20
+     *                         reached 20 using class variables
+     *                         and class method
      * @return TotalSalary   - Returns the value after computing the
      *                         salary
      */
-    public int Condition() {
-        int TotalEmpHr = 0, TotalWorkingDays = 0, MaxHrsInMonth = 100, WorkingDays = 20;
-        int EmpHrs, TotalSalary = 0,FullTime=1, PartTime=0;
-        double empCheck;
+    public static final int PartTime=1;
+    public static final int FullTime=2;
+    public static final int MaxHrsInMonth=100;
+    public static final int WorkingDays=20;
+    public static final int EmpRatePerHour=20;
+
+    public static int Condition() {
+        int TotalEmpHr =0 , TotalWorkingDays = 0;
+        int EmpHrs;
         while (TotalEmpHr < MaxHrsInMonth && TotalWorkingDays < WorkingDays) {
             TotalWorkingDays++;
-            empCheck = GenerateRandom();
-            if (empCheck == FullTime) {
-                EmpHrs = 8;
-                TotalEmpHr = TotalEmpHr + EmpHrs;
-            } else if (empCheck == PartTime) {
-                EmpHrs = 4;
-                TotalEmpHr = TotalEmpHr + EmpHrs;
+            int empCheck = (int ) GenerateRandom();
+            switch (empCheck){
+                case PartTime:
+                    EmpHrs = 4;
+                    break;
+                case FullTime:
+                    EmpHrs = 8;
+                    break;
+                default:
+                    EmpHrs = 0;
             }
+            TotalEmpHr = TotalEmpHr + EmpHrs;
+            System.out.println("day#:" +TotalWorkingDays + " emp hrs:" +EmpHrs);
         }
-        TotalSalary = TotalEmpHr + EmpRatePerHr;
+        int TotalSalary = TotalEmpHr * EmpRatePerHour;
         return TotalSalary;
     }
 }
