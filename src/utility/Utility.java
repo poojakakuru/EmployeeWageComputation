@@ -123,20 +123,16 @@ public class Utility {
 
     /**
      * Functionality         : This function is used to calculate
-     *                         salary of employee till working
-     *                         hours reached 100 or working days
-     *                         reached 20 using class variables
-     *                         and class method
+     *                         salary of employee using class variables
+     *                         and function
+     *
      * @return TotalSalary   - Returns the value after computing the
      *                         salary
      */
     public static final int PartTime=1;
     public static final int FullTime=2;
-    public static final int MaxHrsInMonth=100;
-    public static final int WorkingDays=20;
-    public static final int EmpRatePerHour=20;
+    public static int Condition(int MaxHrsInMonth,int WorkingDays,int EmpRatePerHour) {
 
-    public static int Condition() {
         int TotalEmpHr =0 , TotalWorkingDays = 0;
         int EmpHrs;
         while (TotalEmpHr < MaxHrsInMonth && TotalWorkingDays < WorkingDays) {

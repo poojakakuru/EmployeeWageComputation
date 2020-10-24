@@ -45,4 +45,4 @@ public class EmpWageObjectDmart {
     public void setCompany(String company) {
         this.company = company;
     }
-}  System.out.println("Total Salary of the employee of company " + empWageObjectDmart.getCo
+}
