@@ -5,16 +5,53 @@ package utility;
  *                 getter and setters for all companies in
  *                 EmpWage program
  */
+interface IComputeEmpWage{
+    public void addCompanyEmpWage(int workingDays, int maxHrsInMonth, int empRatePerHr, String company);
+    public int computeEmpWage(EmpWageObject empWageObject);
+}
 public class EmpWageObject {
-    private int WorkingDays;
-    private int MaxHrsInMonth;
-    private  int EmpRatePerHour;
-    private String company;
+    public  int WorkingDays;
+    public  int MaxHrsInMonth;
+    public  int EmpRatePerHour;
+    public  String company;
+    public  int totalWage;
 
+    public EmpWageObject(int workingDays, int maxHrsInMonth, int empRatePerHour, String company) {
+        WorkingDays = workingDays;
+        MaxHrsInMonth = maxHrsInMonth;
+        EmpRatePerHour = empRatePerHour;
+        this.company = company;
+    }
+
+    public void setTotalWage(int totalWage) {
+        this.totalWage = totalWage;
+    }
+
+    @Override
+    public String toString() {
+        return "Total employee wage for company" +company + "is "+ totalWage;
+    }
+
+    /*public String toString() {
+            return "EmpWageObject{" +
+                    "WorkingDays=" + WorkingDays +
+                    ", MaxHrsInMonth=" + MaxHrsInMonth +
+                    ", EmpRatePerHour=" + EmpRatePerHour +
+                    ", company='" + company + '\'' +
+                    '}';
+        }
+    */
     //constructor
     public EmpWageObject() {}
 
     //getters and setters
+
+    public int getTotalWage() {
+        return totalWage;
+    }
+
+
+
     public int getWorkingDays() {
         return WorkingDays;
     }

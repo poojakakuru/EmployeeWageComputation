@@ -1,5 +1,5 @@
 package utility;
-/**@author Pooja Kakuru
+/**@author Pooja kakuru
  * Create Date   : 20th-october-2020
  * Functionality : This file contains constructor,
  *                 getter and setters for

@@ -7,7 +7,7 @@ package utility;
  *                 of all codes of EmpWageComputationJava
  *                 project
  */
-public class Utility {
+public class Utility implements IComputeEmpWage{
     int Is_present = 1;
     int EmpRatePerHr = 20;
 
@@ -123,19 +123,44 @@ public class Utility {
 
     /**
      * Functionality         : This function is used to calculate
-     *                         salary of employee using class variables
-     *                         and function
-     *
+     *                         salary of employee using objects and
+     *                         encapsulation
+     * @param WorkingDays    - Input taken from object for number of
+     *                         working days in particular company
+     * @param MaxHrsInMonth  - Input taken from object for maximum
+     *                         number of working hours in particular
+     *                         company
+     * @param EmpRatePerHour - Input taken from object for Employee
+     *                         wage per hour according to particular
+     *                         company
      * @return TotalSalary   - Returns the value after computing the
      *                         salary
      */
     public static final int PartTime=1;
     public static final int FullTime=2;
-    public static int Condition(int MaxHrsInMonth,int WorkingDays,int EmpRatePerHour) {
 
+    public int numOfCompany=0;
+    private EmpWageObject[] companyEmpWageArray;
+
+    public Utility() {
+        companyEmpWageArray = new EmpWageObject[5];
+    }
+
+    public void addCompanyEmpWage(int workingDays, int maxHrsInMonth, int empRatePerHr, String company){
+        companyEmpWageArray[numOfCompany] = new EmpWageObject(workingDays,maxHrsInMonth,empRatePerHr,company);
+        numOfCompany++;
+    }
+
+    public void computeEmpWage(){
+        for (int i=0; i< numOfCompany; i++){
+            companyEmpWageArray[i].setTotalWage(this.computeEmpWage(companyEmpWageArray[i]));
+        }
+    }
+
+    public int computeEmpWage(EmpWageObject empWageObject) {
         int TotalEmpHr =0 , TotalWorkingDays = 0;
         int EmpHrs;
-        while (TotalEmpHr < MaxHrsInMonth && TotalWorkingDays < WorkingDays) {
+        while (TotalEmpHr <= empWageObject.MaxHrsInMonth && TotalWorkingDays < empWageObject.WorkingDays) {
             TotalWorkingDays++;
             int empCheck = (int ) GenerateRandom();
             switch (empCheck){
@@ -151,8 +176,8 @@ public class Utility {
             TotalEmpHr = TotalEmpHr + EmpHrs;
             System.out.println("day#:" +TotalWorkingDays + " emp hrs:" +EmpHrs);
         }
-        int TotalSalary = TotalEmpHr * EmpRatePerHour;
+        int TotalSalary = TotalEmpHr * empWageObject.EmpRatePerHour;
+        System.out.println("total salary for company "+empWageObject.company + " is:" + TotalSalary);
         return TotalSalary;
     }
 }
-
