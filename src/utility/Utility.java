@@ -7,7 +7,7 @@ package utility;
  *                 of all codes of EmpWageComputationJava
  *                 project
  */
-public class Utility implements IComputeEmpWage{
+public class Utility {
     int Is_present = 1;
     int EmpRatePerHr = 20;
 
@@ -139,28 +139,10 @@ public class Utility implements IComputeEmpWage{
     public static final int PartTime=1;
     public static final int FullTime=2;
 
-    public int numOfCompany=0;
-    private EmpWageObject[] companyEmpWageArray;
-
-    public Utility() {
-        companyEmpWageArray = new EmpWageObject[5];
-    }
-
-    public void addCompanyEmpWage(int workingDays, int maxHrsInMonth, int empRatePerHr, String company){
-        companyEmpWageArray[numOfCompany] = new EmpWageObject(workingDays,maxHrsInMonth,empRatePerHr,company);
-        numOfCompany++;
-    }
-
-    public void computeEmpWage(){
-        for (int i=0; i< numOfCompany; i++){
-            companyEmpWageArray[i].setTotalWage(this.computeEmpWage(companyEmpWageArray[i]));
-        }
-    }
-
-    public int computeEmpWage(EmpWageObject empWageObject) {
+    public static int Condition(int WorkingDays, int MaxHrsInMonth, int EmpRatePerHour) {
         int TotalEmpHr =0 , TotalWorkingDays = 0;
         int EmpHrs;
-        while (TotalEmpHr <= empWageObject.MaxHrsInMonth && TotalWorkingDays < empWageObject.WorkingDays) {
+        while (TotalEmpHr < MaxHrsInMonth && TotalWorkingDays < WorkingDays) {
             TotalWorkingDays++;
             int empCheck = (int ) GenerateRandom();
             switch (empCheck){
@@ -176,8 +158,7 @@ public class Utility implements IComputeEmpWage{
             TotalEmpHr = TotalEmpHr + EmpHrs;
             System.out.println("day#:" +TotalWorkingDays + " emp hrs:" +EmpHrs);
         }
-        int TotalSalary = TotalEmpHr * empWageObject.EmpRatePerHour;
-        System.out.println("total salary for company "+empWageObject.company + " is:" + TotalSalary);
+        int TotalSalary = TotalEmpHr * EmpRatePerHour;
         return TotalSalary;
     }
 }

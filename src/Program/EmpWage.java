@@ -15,11 +15,20 @@ public class EmpWage {
     public static void main(String[] args) {
         //welcome message
         System.out.println("Welcome to Employee Wage Computation Program");
-        //computing salary of employee for company Dmart and Reliance using Interface
+        //computing salary of employee for company Dmart and Reliance using ArrayList
 
         Utility util=new Utility();
-        util.addCompanyEmpWage(20,10,2,"Dmart");
-        util.addCompanyEmpWage(10,20,4,"Reliance");
-        util.computeEmpWage();
+        EmpWageObject empWageObject1=new EmpWageObject(20,100,20,
+                "Dmart");
+        EmpWageObject empWageObject2=new EmpWageObject(10,50,12,
+                "Reliance");
+
+        ArrayList<EmpWageObject> list = new ArrayList<EmpWageObject>();
+        list.add(empWageObject1);
+        list.add(empWageObject2);
+
+        for (EmpWageObject emp : list)
+
+            System.out.println(emp);
     }
 }
